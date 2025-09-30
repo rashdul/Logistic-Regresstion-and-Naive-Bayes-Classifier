@@ -246,7 +246,7 @@ As a first attempt, Brian tries a simple linear regression model:
     \end{bmatrix}
   \end{equation}
   \[ \vec{\beta} = (\tilde{X}^T\tilde{X})^{-1}\tilde{X}^Ty \]
-  \[ \text{dim}(\vec{\beta}) = 2 \]
+  \[ \text{dim}(\vec{\beta}) = 2 by 1 \]
   \end{solutionorbox}
 
   \newpage
@@ -273,6 +273,8 @@ Notice how the residuals are not randomly scattered around zero. This suggests t
 
   \begin{solutionorbox}[2in]
     \[ \hat{y} = \beta_0 + \beta_1\hat{X} + \beta_2(\hat{X} - 10)h(t) \]
+    \[ \hat{y} = \beta_0 + \beta_1\hat{X} + \beta_2\hat{X}^* \]
+    where \[ \hat{X}^* = (\hat{X} - 10)h(t) \]
   \end{solutionorbox}
 
   \newpage
@@ -280,7 +282,14 @@ Notice how the residuals are not randomly scattered around zero. This suggests t
   The model in part (b) should introduce one additional feature.
   Following the same approach as in part (a), write down the input matrix $\tilde X$ for the two-piece model. (Note: you do not need to rewrite $y$ or the closed-form solution; do not attempt to write separate closed forms for each piece.)
   \begin{solutionorbox}[3in]
-    Your solution goes here
+    \[ \tilde{X}=\begin{bmatrix} 
+      1 & 0 & 0 \\ 
+      1 & 5 & 0 \\ 
+      1 & 8 & 0 \\ 
+      1 & 11 & 1 \\ 
+      1 & 14 & 4 \\ 
+      1 & 20 & 10 \\ 
+    \end{bmatrix} \]
   \end{solutionorbox}
 
   \newpage
@@ -294,7 +303,7 @@ Notice how the residuals are not randomly scattered around zero. This suggests t
   to the two-piece linear model in parts (b)-(c).
   
   \begin{solutionorbox}[2.5in]
-    Your solution goes here
+    exponential model would have a high variance on the training data, which would make it overfitting the data, and would do porely on the test data.
   \end{solutionorbox}
   
 \end{parts}
@@ -362,7 +371,10 @@ Show that $\sum_{i=1}^n \text{Cov}(\hat{f}_D(x_i), Y_i) = d\sigma^2$\\
 Hint: Let $H = X(X^\top X)^{-1} X^\top$. Use $\hat{f}_D(x_i) = \sum_{j=1}^n H_{ij}Y_j$, independence of noise, and the cyclic property of the trace (of a matrix), specifically that $\text{tr}(H) = \text{tr}(X^\top X (X^\top X)^{-1})$.  Recall also that $\text{Cov}(.)$ is an expectation, and thus obeys linearity of expectation, namely that $\mathbb{E}[a X + b Y]$ =
 $a \mathbb{E}[X] + b \mathbb{E}[Y]$.
   \begin{solutionorbox}[2in]
-    Your solution goes here.
+    \[ \sum_{i=1}^{N} Cov(HY, Y) = \]
+    \[ = \sum_{i=1}^{N}E[(HY-E(HY))(Y-EY)] \]
+    \[ = \sum_{i=1}^{N}H*Cov(Y,Y) = \sum_{i=1}^{N}H*Var(Y) = \sum_{i=1}^{N}H\sigma^2 I_n \]
+    \[ = \sigma^2 I_n*tr(H) = \sigma^2 I_n*tr((X^\top X (X^\top X)^{-1})) = \boxed{d\sigma^2}\]
   \end{solutionorbox}
 
   \newpage
@@ -370,7 +382,9 @@ $a \mathbb{E}[X] + b \mathbb{E}[Y]$.
   What is the expected optimism of this model? Explain why this result makes sense in terms of model complexity and overfitting?
 
   \begin{solutionorbox}[5in]
-    Your solution goes here.
+    According to The Elements of Statistical Learning by Hastie, Tibshirani, and Friedman.
+    \[ op = Err_{in} - \overline{err} = \frac{2}{n}\sum_{i=1}^{n}Cov(\hat{y_i}, y_i) = \frac{2}{n}d\sigma^2 \]
+    This result makes sense because as the number of parameters in the model increases, the model becomes more complex and is more likely to overfit the training data. This leads to a larger difference between the training error and the test error, which is captured by the optimism.
   \end{solutionorbox}
   \end{parts}
 
