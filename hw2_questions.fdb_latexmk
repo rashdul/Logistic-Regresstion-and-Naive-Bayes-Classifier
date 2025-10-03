@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1759271686.92736 "d:/OneDrive/Johns_Hopkins/Classes/EN.601.475.01 (Machine Learning)/Homeworks/HW2/hw2_questions.tex" "hw2_questions.pdf" "hw2_questions" 1759271689.79748 0
+["pdflatex"] 1759529277.92196 "d:/OneDrive/Johns_Hopkins/Classes/EN.601.475.01 (Machine Learning)/Homeworks/HW2/hw2_questions.tex" "hw2_questions.pdf" "hw2_questions" 1759529281.32167 0
   "C:/Users/rashd/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1757615263 81068 299f700eb05b1217173e62b88b513bd0 ""
   "C:/Users/rashd/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk" 1757615375 12668 0c278941b2febe66160d662a5462e94b ""
   "C:/Users/rashd/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1757615043 13257343 40d2338f5cca80f2f427815e3b41a170 ""
@@ -133,12 +133,12 @@
   "C:/Users/rashd/AppData/Local/Programs/MiKTeX/tex/latex/wrapfig/wrapfig.sty" 1044403200 26220 3701aebf80ccdef248c0c20dd062fea9 ""
   "C:/Users/rashd/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/rashd/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "d:/OneDrive/Johns_Hopkins/Classes/EN.601.475.01 (Machine Learning)/Homeworks/HW2/hw2_questions.tex" 1759271685 18290 115a3f8fd590268551ab16d398eecc9b ""
+  "d:/OneDrive/Johns_Hopkins/Classes/EN.601.475.01 (Machine Learning)/Homeworks/HW2/hw2_questions.tex" 1759529276 20846 e04f2ab1cda74d4226b90e9fc8e7de5d ""
   "figure_1.png" 1758594074 28278 968565830455af27144c1ddd8c2dd8c5 ""
   "figure_2.png" 1758594075 21789 02fb6a6ecaf4e2501cff68bfa8f42d7f ""
-  "hw2_questions.aux" 1759271689 8402 58bc844e9eb0f5947bad9bb89a3761b5 "pdflatex"
-  "hw2_questions.out" 1759271688 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "hw2_questions.tex" 1759271685 18290 115a3f8fd590268551ab16d398eecc9b ""
+  "hw2_questions.aux" 1759529280 8402 58bc844e9eb0f5947bad9bb89a3761b5 "pdflatex"
+  "hw2_questions.out" 1759529280 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "hw2_questions.tex" 1759529276 20846 e04f2ab1cda74d4226b90e9fc8e7de5d ""
   (generated)
   "hw2_questions.aux"
   "hw2_questions.log"

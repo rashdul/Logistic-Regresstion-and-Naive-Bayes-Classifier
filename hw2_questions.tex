@@ -327,7 +327,20 @@ This pulls each estimate toward the global average. The shrinkage strength is co
     \part[10] Compute the bias and variance of $\hat{\mu}_i(\lambda)$.
 
     \begin{solutionorbox}
-      Your solution goes here.
+      Variance:
+      \[ Var(y_i) = \sigma^2 \]
+      \[ Var(\bar{y}) = \frac{\sigma^2}{n} \]
+      \[ Cov(y_i, \bar{y}) = E[(y_i - Ey_i)(\frac{1}{n}\sum_{j = 1}^{n}y_i - E(\frac{1}{n}\sum_{j = 1}^{n}y_i))]\]
+      \[ = \frac{1}{n}\sum_{j=1}^{n} Cov(y_i,y_j) = \frac{1}{n} Var(y_i) = \boxed{\frac{1}{n}\sigma^2}\]
+      \[ Var(\hat{\mu_i}(\lambda)) = Var((1-\lambda)y_i + \lambda\bar{y})\]
+      \[ = (1-\lambda)^2 Var(y_i) + \lambda^2 Var(\bar{y}) + 2(1-\lambda)(\lambda)Cov(y_i, \bar{y}) \]
+      \[ = \boxed{(1-\lambda)^2 \sigma^2 + \lambda^2 \frac{\sigma^2}{n} + \frac{2(1-\lambda)(\lambda)}{n} \sigma^2}\]
+      Bias:
+      \[ E[\hat{\mu_i}(\lambda)] = (1-\lambda) Ey_i + \lambda E\bar{y} \]
+      \[ = (1 - \lambda) \mu_i\ + \lambda\bar{\mu} \]
+      \[ Bias(\hat{\mu_i}(\lambda)) = E[(1 - \lambda)y_i + \lambda \bar{y}] - \mu_i\]
+      \[ = (1 - \lambda) \mu_i\ + \lambda\bar{\mu} - \mu_i\]
+      \[ = \lambda(\bar{\mu} - \mu_i)\]
     \end{solutionorbox}
 
 
@@ -335,7 +348,14 @@ This pulls each estimate toward the global average. The shrinkage strength is co
     \part[10] Derive the expected squared error (also known as the risk) of the estimator $\hat{\mu}_i(\lambda)$, or $R(\hat{\mu}_i(\lambda)) = \mathbb{E}[(\hat{\mu}_i(\lambda) - \mu_i)^2]$, in terms of $\lambda$, $\mu_i$, $\bar{\mu}$, and $\sigma^2$. Then, interpret your result to explain how the bias-variance tradeoff depends on different values for $\lambda$.
 
     \begin{solutionorbox}
-      Your solution goes here.
+     \[ E[(\hat{\mu}_i(\lambda) - \mu_i)^2] = E[\hat{\mu}_i(\lambda)^2] - 2\mu_i E[\hat{\mu}_i(\lambda)] + \mu_i^2 \]
+     \[ = Var(\hat{\mu}_i(\lambda)) + (E[\hat{\mu}_i(\lambda)])^2 - 2\mu_i E[\hat{\mu}_i(\lambda)] + \mu_i^2 \]
+     \[ = Var(\hat{\mu}_i(\lambda)) + (E[\hat{\mu}_i(\lambda)] - \mu_i)^2 \]
+     \[ = Var(\hat{\mu}_i(\lambda)) + Bias(\hat{\mu}_i(\lambda))^2 \]
+     \[ = (1-\lambda)^2 \sigma^2 + \lambda^2 \frac{\sigma^2}{n} + \frac{2(1-\lambda)(\lambda)}{n} \sigma^2 + (\lambda(\bar{\mu} - \mu_i))^2 \]
+     \[ = \boxed{(1-\lambda)^2 \sigma^2 + \lambda^2 \frac{\sigma^2}{n} + \frac{2(1-\lambda)(\lambda)}{n} \sigma^2 + \lambda^2(\bar{\mu} - \mu_i)^2} \]
+      When we have too large lambda, the bias will be high and the variance will be low. When we have too small lambda, the bias will be low and the variance will be high. So we need to find a balance between bias and variance by choosing an appropriate value for lambda.     
+     
     \end{solutionorbox}
 
     \newpage
@@ -345,7 +365,13 @@ This pulls each estimate toward the global average. The shrinkage strength is co
         $p(\mu_i \mid y_i) \propto \text{Likelihood} \times \text{Prior}$.}
 
         \begin{solutionorbox}
-          Your solution goes here
+          \[ p(y_i | \mu_i) = \frac{1}{\sqrt{2\pi\sigma^2}} \int\exp\left(-\frac{(y_i - \mu_i)^2}{2\sigma^2}\right) dy_i\]
+          \[ p(\mu_i) = \frac{1}{\sqrt{2\pi\tau^2}} \int\exp\left(-\frac{\mu_i^2}{2\tau^2}\right) d\mu_i\]
+          \[ p(\mu_i | y_i) \propto p(y_i | \mu_i)p(\mu_i) \]
+          \[ \propto \exp\left(-\frac{(y_i - \mu_i)^2}{2\sigma^2}\right)\exp\left(-\frac{\mu_i^2}{2\tau^2}\right) \]
+          \[ \propto \exp\left(-\frac{1}{2}\left(\frac{(y_i - \mu_i)^2}{\sigma^2} + \frac{\mu_i^2}{\tau^2}\right)\right) \]
+          \[ \propto \exp\left(-\frac{1}{2}\left(\mu_i^2(\frac{1}{\sigma^2} + \frac{1}{\tau^2}) - 2\mu_i\frac{y_i}{\sigma^2}\right)\right) \]
+          \[ E[\mu_i | y_i] \text{ would be the mean of the above distribution }\]  
         \end{solutionorbox}
 
     \end{parts}
@@ -384,7 +410,7 @@ $a \mathbb{E}[X] + b \mathbb{E}[Y]$.
   \begin{solutionorbox}[5in]
     According to The Elements of Statistical Learning by Hastie, Tibshirani, and Friedman.
     \[ op = Err_{in} - \overline{err} = \frac{2}{n}\sum_{i=1}^{n}Cov(\hat{y_i}, y_i) = \frac{2}{n}d\sigma^2 \]
-    This result makes sense because as the number of parameters in the model increases, the model becomes more complex and is more likely to overfit the training data. This leads to a larger difference between the training error and the test error, which is captured by the optimism.
+    This result makes sense because as the number of parameters in the model increases, the model becomes more complex and is more likely to overfit the training data. This leads to a larger difference between the in-sample error and the test error, which is captured by the optimism.
   \end{solutionorbox}
   \end{parts}
 
